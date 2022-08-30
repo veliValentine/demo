@@ -4,7 +4,13 @@ const REST_COUNTRIES_API_V3 = 'https://restcountries.com/v3.1'
 
 const getNamesCommon = (countries = []) => countries.map(getNameCommon)
 
-const getNameCommon = (country) => country.name.common
+const getCountryByCommonName = (countries = [], name = '') => {
+  const findByName = (country) => (
+    getNameCommon(country) === name
+  )
+  console.log({ name, countries })
+  return countries.find(findByName)
+}
 
 const getAll = async () => {
   try {
@@ -17,9 +23,17 @@ const getAll = async () => {
   }
 }
 
+const getNameCommon = (country) => country.name.common
+const getOfficialName = (country) => country.name.official
+const getFlasgSvg = (country) => country.flags.svg
+
 const countryService = {
   getAll,
-  getNamesCommon
+  getNamesCommon,
+  getCountryByCommonName,
+  getNameCommon,
+  getOfficialName,
+  getFlasgSvg
 }
 
 export default countryService
