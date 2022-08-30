@@ -6,7 +6,7 @@ import useCountries from './hooks/useCountries';
 import useCountry from './hooks/useCountry';
 
 function App() {
-  const [countries] = useCountries()
+  const [countries, countriesLoading] = useCountries()
   const [country, countryUpdateOptions] = useCountry(countries)
 
   const countriesNames = countryHelper.getNamesCommon(countries)
@@ -14,14 +14,18 @@ function App() {
   return (
     <div className="App">
       <h1>Countries</h1>
-      <DropDownMenu
-        onChange={countryUpdateOptions.updateCountryByName}
-        defaultOptionText='Select country'
-        title='Country'
-        values={countriesNames}
-      />
-      <hr />
-      <Country value={country} />
+      {countriesLoading ? 'Loading...' :
+        <>
+          <DropDownMenu
+            onChange={countryUpdateOptions.updateCountryByName}
+            defaultOptionText='Select country'
+            title='Country'
+            values={countriesNames}
+          />
+          <hr />
+          <Country value={country} />
+        </>
+      }
     </div >
   );
 }
