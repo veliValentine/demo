@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import countryHelper from '../helpers/countryHelper'
 
+let throttleId
+
 const useCountry = (countries) => {
   const [country, setCountry] = useState()
 
@@ -8,7 +10,12 @@ const useCountry = (countries) => {
     const name = event?.target?.value
     if (name === undefined) return
     const foundCountry = countryHelper.getCountryByCommonName(countries, name)
-    setCountry(foundCountry)
+
+    clearTimeout(throttleId)
+    throttleId = setTimeout(() => {
+
+      setCountry(foundCountry)
+    }, 100)
   }
 
   return [country, { updateCountryByName }]
