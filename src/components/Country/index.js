@@ -1,14 +1,13 @@
-import countryService from '../../services/countryService'
-
+import countryHelper from '../../helpers/countryHelper'
 import './index.css'
 
 const Country = ({
   value: country
 }) => {
   if (!country) return <h2>No country selected</h2>
-  const commonName = countryService.getNameCommon(country)
-  const officialName = countryService.getOfficialName(country)
-  const flagUrl = countryService.getFlasgSvg(country)
+  const commonName = countryHelper.getNameCommon(country)
+  const officialName = countryHelper.getOfficialName(country)
+  const flagUrl = countryHelper.getFlasgSvg(country)
   return (
     <div className='container'>
       <div>

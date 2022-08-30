@@ -2,19 +2,19 @@ import { useState } from 'react';
 import './App.css';
 import Country from './components/Country';
 import DropDownMenu from './components/DropDownMenu';
+import countryHelper from './helpers/countryHelper';
 import useCountries from './hooks/useCountries';
-import countryService from './services/countryService';
 
 function App() {
   const [countries] = useCountries()
   const [country, setCountry] = useState()
 
-  const countriesNames = countryService.getNamesCommon(countries)
+  const countriesNames = countryHelper.getNamesCommon(countries)
 
   const updateCountryName = (event) => {
     const name = event?.target?.value
     if (name === undefined) return
-    const foundCountry = countryService.getCountryByCommonName(countries, name)
+    const foundCountry = countryHelper.getCountryByCommonName(countries, name)
     setCountry(foundCountry)
   }
 
