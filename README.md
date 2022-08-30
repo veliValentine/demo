@@ -1,3 +1,16 @@
+# Get started
+Quick react demo application for displaying countries information from `https://restcountries.com/v3.1`.
+## Dev
+1. `npm ci`
+2. `npm start`
+3. Open [http://localhost:3000](http://localhost:3000)
+
+## Static file
+1. `npm ci`
+2. `npm run build`
+3. `npm install -g serve`
+4. `serve -s build`
+---
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
